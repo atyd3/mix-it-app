@@ -1,12 +1,15 @@
 import {createRouter, createWebHistory} from "vue-router";
 
-import coctailsList from './pages/cocktails/cocktailsList';
+import CocktailsList from './pages/cocktails/CocktailsList';
+import CocktailDetails from './pages/cocktails/CocktailDetails.vue';
 import NotFound from './pages/NotFound.vue';
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        {path: '/', component: coctailsList},
+        {path: '/', redirect: '/cocktails'},
+        {path: '/cocktails', component: CocktailsList},
+        { path: '/cocktails/:id', component: CocktailDetails},
         // {path: '/coaches/:id', component: CoachDetail, props: true, children: [
         //     {path: 'contact', component: ContactCoach} // /coaches/c1/contact
         //     ]

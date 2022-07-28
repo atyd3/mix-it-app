@@ -1,32 +1,50 @@
 <template>
   <header>
     <nav>
-      <h1>Mix it!</h1>
+      <router-link to="/">
+        <img src="@/assets/logo.svg" class="logo-img"/>
+        <h1 class="logo">Mix it!</h1>
+      </router-link>
     </nav>
   </header>
 </template>
+<script>
+
+</script>
+
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@700&display=swap");
+
+
+.logo {
+  font-size: 3rem;
+  font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+.logo-img {
+  height: 4rem;
+}
 
 header {
   width: 100%;
-  height: 5rem;
+  height: 5.5rem;
   background-color: #3d008d;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
+
 
 header a {
   text-decoration: none;
-  color: #f391e3;
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
+  color: black;
+  display: flex;
+  padding: 0.75rem .5rem;
   border: 1px solid transparent;
 }
 
-a:active,
-a:hover,
 a.router-link-active {
   border: 1px solid #f391e3;
 }
@@ -50,7 +68,7 @@ header nav {
   width: 90%;
   margin: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 
