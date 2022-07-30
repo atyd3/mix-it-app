@@ -1,13 +1,25 @@
 <template>
   <div>
+    <base-dialog :show="!!error" title="An error occured!" @close="handleError">
+      <p>{{ error }}</p>
+    </base-dialog>
   <div v-if="isLoading">
     <base-spinner></base-spinner>
   </div>
+    <div v-else-if="Object.keys(drinkDetails).length === 0">
+      <base-card>
+        Cocktail not found.
+        Maybe checkout <router-link to="/popular">popular drinks</router-link>
+      </base-card>
+    </div>
   <div v-else>
-    <img v-if="!isFavorite" src="@/assets/outlineStar.svg" @click="addFavorite" />
-    <img v-else src="@/assets/solidStar.svg" @click="deleteFavorite" />
+    <base-card>
+    <img v-if="!isFavorite" src="@/assets/outlineStar.svg" @click="addFavorite" class="icon"/>
+    <img v-else src="@/assets/solidStar.svg" @click="deleteFavorite" class="icon"/>
     <h1>{{ drinkDetails.strDrink }}</h1>
-    <img :src="drinkDetails.strDrinkThumb">
+    <div class="img-box">
+      <img :src="drinkDetails.strDrinkThumb">
+    </div>
     <ul><h3>Ingredients:</h3></ul>
     <li v-for="(ingredient, key) in drinkIngredients" :key="key">
       {{ ingredient.name }}: {{ ingredient.measure }}
@@ -16,27 +28,35 @@
     <p>{{ drinkDetails.strInstructions }}</p>
     <h3>Glass type:</h3>
     <p>{{ drinkDetails.strGlass}}</p>
+    </base-card>
   </div>
   </div>
 </template>
 
 <script>
+import BaseCard from "@/components/UI/BaseCard";
 export default {
+  components: {BaseCard},
   data() {
     return {
       isLoading: false,
       id: this.$route.params.id,
       drinkDetails: {},
       drinkIngredients: {},
-      favorites: []
+      favorites: [],
+      error: null
     }
   },
   methods: {
     async fetchCocktail() {
       this.isLoading = true;
+      try {
       const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=` + this.id);
       const responseData = await response.json();
       this.drinkDetails = responseData.drinks[0];
+      } catch (error){
+        this.error = 'Loading data failed!'
+      }
       this.listIngredients();
       this.isLoading = false
     },
@@ -52,20 +72,21 @@ export default {
       }).filter(Boolean)
     },
     addFavorite(){
-      console.log(this.id);
-      console.log('this.favorites',this.favorites)
       this.favorites.push(this.id);
-      console.log('JSON.stringify(this.favorites)',JSON.stringify(this.favorites))
+      localStorage.setItem('favoriteDrinks', JSON.stringify(this.favorites));
+    },
+    deleteFavorite(){
+      this.favorites = this.favorites.filter((e)=> e !== this.id);
       localStorage.setItem('favoriteDrinks', JSON.stringify(this.favorites));
     },
     getFavoriteCocktails(){
       const storage = JSON.parse(localStorage.getItem('favoriteDrinks'));
-      console.log('storage',storage)
       if (storage) {
-        console.log('this.favorites',this.favorites)
         this.favorites = storage
       }
-
+    },
+    handleError() {
+      this.error = null;
     }
   },
   computed: {
@@ -73,6 +94,12 @@ export default {
       console.log('this.favo',this.favorites)
       return this.favorites? this.favorites.find((e)=> e === this.id) : false
     }
+  },
+  watch: {
+  $route(){
+    this.id = this.$route.params.id;
+    this.fetchCocktail();
+  }
   },
   created() {
     this.fetchCocktail();
@@ -88,5 +115,13 @@ img {
 
 li {
   list-style: none;
+}
+
+.icon {
+  width: 2.4rem;
+  display: inline-block;
+}
+h1 {
+  display: inline-block;
 }
 </style>

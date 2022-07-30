@@ -1,10 +1,11 @@
 <template>
   <div>
-  <h1>cocktails list</h1>
   <div v-if="isLoading">
     <base-spinner></base-spinner>
   </div>
-  <ul v-else>
+    <div v-else>
+  <h1>cocktails list</h1>
+  <ul>
     <cocktail-item
         v-for="cocktail in cocktails"
         :key="cocktail.id"
@@ -13,6 +14,7 @@
         :image="cocktail.image"
     ></cocktail-item>
   </ul>
+    </div>
   </div>
 </template>
 <script>
@@ -20,11 +22,11 @@ import CocktailItem from "@/pages/cocktails/CocktailItem";
 
 export default {
   components: {CocktailItem},
-  provide(){
-    return {
-      cocktails: this.cocktails
-    }
-  },
+  // provide(){
+  //   return {
+  //     cocktails: this.cocktails
+  //   }
+  // },
   data() {
     return {
       cocktails: [],

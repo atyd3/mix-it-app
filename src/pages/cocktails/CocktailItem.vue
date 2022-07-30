@@ -15,7 +15,7 @@ export default {
   props: ['name', 'image', 'id'],
   computed: {
     detailsLink(){
-      return this.$route.path + '/' + this.id;
+      return '/cocktails/' + this.id;
     }
   }
 }
@@ -28,5 +28,9 @@ img {
 
 a {
   text-decoration: none;
+}
+
+li {
+  list-style: none;
 }
 </style>

@@ -5,6 +5,12 @@
         <img src="@/assets/logo.svg" class="logo-img"/>
         <h1 class="logo">Mix it!</h1>
       </router-link>
+      <router-link to="/favorites">
+        <h3>Favorites</h3>
+      </router-link>
+      <router-link to="/popular">
+        <h3>Popular drinks</h3>
+      </router-link>
     </nav>
   </header>
 </template>
