@@ -1,4 +1,5 @@
 <template>
+  <div>
   <h1>cocktails list</h1>
   <div v-if="isLoading">
     <base-spinner></base-spinner>
@@ -12,6 +13,7 @@
         :image="cocktail.image"
     ></cocktail-item>
   </ul>
+  </div>
 </template>
 <script>
 import CocktailItem from "@/pages/cocktails/CocktailItem";
@@ -58,5 +60,6 @@ ul {
   margin: 0;
   padding: 0;
 }
+
 
 </style>

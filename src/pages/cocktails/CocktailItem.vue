@@ -25,4 +25,8 @@ export default {
 img {
   width: 10rem
 }
+
+a {
+  text-decoration: none;
+}
 </style>
