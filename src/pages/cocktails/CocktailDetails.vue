@@ -10,7 +10,7 @@
       <base-card>
         Cocktail not found.
         Maybe checkout
-        <router-link to="/popular">popular drinks</router-link>
+        <router-link to="/ordinary">ordinary drinks</router-link>
       </base-card>
     </div>
     <div v-else>
@@ -26,7 +26,8 @@
         <h3>Ingredients:</h3>
         <ul></ul>
         <li v-for="(ingredient, key) in drinkIngredients" :key="key">
-          {{ ingredient.name }}: {{ ingredient.measure }}
+          {{ ingredient.name }}
+          <span v-if="ingredient.measure">: {{ ingredient.measure }}</span>
         </li>
         <h3>Instructions:</h3>
         <p>{{ drinkDetails.strInstructions }}</p>
@@ -74,7 +75,8 @@ export default {
             measure: this.drinkDetails[`strMeasure${e[0].replace('strIngredient', '')}`]
           }
         }
-      }).filter(Boolean)
+      }).filter(Boolean);
+      console.log(this.drinkIngredients)
     },
     addFavorite() {
       this.favorites.push(this.id);
@@ -113,11 +115,10 @@ export default {
 </script>
 
 <style scoped>
-img {
+.img-box img{
   width: 25rem;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-
 }
 
 .star {

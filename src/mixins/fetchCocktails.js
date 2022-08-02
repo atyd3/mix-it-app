@@ -1,5 +1,5 @@
-export default async function fetchCocktails(link) {
-    const response = await fetch(link);
+export default async function fetchCocktails(endpoint) {
+    const response = await fetch(endpoint);
     const responseData = await response.json();
     const drinks = responseData.drinks;
     const cocktails = [];

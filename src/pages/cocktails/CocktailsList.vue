@@ -3,41 +3,38 @@
     <base-dialog :show="!!error" title="An error occured!" @close="handleError">
       <p>{{ error }}</p>
     </base-dialog>
-  <div v-if="isLoading">
-    <base-spinner></base-spinner>
-  </div>
-    <div v-else>
-  <h1>cocktails list</h1>
-  <ul>
-    <cocktail-item
-        v-for="cocktail in cocktails"
-        :key="cocktail.id"
-        :id="cocktail.id"
-        :name="cocktail.name"
-        :image="cocktail.image"
-    ></cocktail-item>
-  </ul>
+    <div v-if="isLoading">
+      <base-spinner></base-spinner>
     </div>
+    <ul v-else>
+      <cocktail-item
+          v-for="cocktail in cocktails"
+          :key="cocktail.id"
+          :id="cocktail.id"
+          :name="cocktail.name"
+          :image="cocktail.image"
+      ></cocktail-item>
+    </ul>
   </div>
 </template>
+
 <script>
 import fetchCocktails from "@/mixins/fetchCocktails";
 
 export default {
-  // components: {CocktailItem},
+  props: {endpoint: {type: String, required: true}},
   data() {
     return {
       cocktails: [],
       isLoading: false,
-      link:'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail',
       error: null
     }
   },
   methods: {
-    async loadCocktails() {
+    async loadCocktails(endpoint) {
       this.isLoading = true;
       try {
-        this.cocktails = await fetchCocktails(this.link);
+        this.cocktails = await fetchCocktails(endpoint);
       } catch (error) {
         this.error = error.message || 'Failed to load data, try again later';
       }
@@ -47,18 +44,13 @@ export default {
       this.error = null;
     }
   },
+  watch: {
+    endpoint(nVal) {
+      this.loadCocktails(nVal);
+    }
+  },
   created() {
-    this.loadCocktails(this.link);
+    this.loadCocktails(this.endpoint);
   }
 }
 </script>
-
-<style scoped>
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-
-</style>

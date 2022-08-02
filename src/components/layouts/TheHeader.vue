@@ -9,11 +9,14 @@
       <router-link to="/favorites">
         <h3>Favorites</h3>
       </router-link>
+        <router-link to="/alcoholic">
+          <h3>Alcoholic drinks</h3>
+        </router-link>
       <router-link to="/ordinary">
-        <h3>Ordinary</h3>
+        <h3>Ordinary drinks</h3>
       </router-link>
       <router-link to="/non_alcoholic">
-        <h3>Non alcoholic</h3>
+        <h3>Non-alcoholic</h3>
       </router-link>
       </div>
     </nav>
@@ -58,7 +61,7 @@ header a {
 }
 
 a.router-link-active {
-  border: 1px solid #f391e3;
+  text-decoration: underline;
 }
 
 .container {

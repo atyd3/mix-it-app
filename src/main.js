@@ -7,7 +7,7 @@ import BaseButton from "./components/UI/BaseButton.vue";
 import BaseSpinner from './components/UI/BaseSpinner.vue';
 import BaseDialog from "@/components/UI/BaseDialog";
 
-import CocktailItem from './pages/cocktails/CocktailItem.vue'
+import CocktailItem from './components/cocktails/CocktailItem.vue'
 
 
 const app = createApp(App)
