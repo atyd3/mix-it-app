@@ -32,6 +32,10 @@ body {
   padding-top: 5.5rem;
 }
 
+h1 {
+  margin: .5rem;
+}
+
 .route-enter-from {
   opacity: 0;
   transform: translateX(-30px);

@@ -3,33 +3,30 @@
     <base-dialog :show="!!error" title="An error occured!" @close="handleError">
       <p>{{ error }}</p>
     </base-dialog>
-  <div v-if="isLoading">
-    <base-spinner></base-spinner>
-  </div>
-    <div v-else>
-  <h1>cocktails list</h1>
-  <ul>
-    <cocktail-item
-        v-for="cocktail in cocktails"
-        :key="cocktail.id"
-        :id="cocktail.id"
-        :name="cocktail.name"
-        :image="cocktail.image"
-    ></cocktail-item>
-  </ul>
+    <div v-if="isLoading">
+      <base-spinner></base-spinner>
     </div>
+      <ul v-else>
+        <cocktail-item
+            v-for="cocktail in cocktails"
+            :key="cocktail.id"
+            :id="cocktail.id"
+            :name="cocktail.name"
+            :image="cocktail.image"
+        ></cocktail-item>
+      </ul>
   </div>
 </template>
+
 <script>
-import fetchCocktails from "@/mixins/fetchCocktails";
+import fetchCocktails from '../../mixins/fetchCocktails.js'
 
 export default {
-  // components: {CocktailItem},
   data() {
     return {
       cocktails: [],
       isLoading: false,
-      link:'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail',
+      link: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic',
       error: null
     }
   },
@@ -48,17 +45,7 @@ export default {
     }
   },
   created() {
-    this.loadCocktails(this.link);
+    this.loadCocktails()
   }
 }
 </script>
-
-<style scoped>
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-
-</style>

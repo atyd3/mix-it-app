@@ -5,12 +5,17 @@
         <img src="@/assets/logo.svg" class="logo-img"/>
         <h1 class="logo">Mix it!</h1>
       </router-link>
+      <div class="container">
       <router-link to="/favorites">
         <h3>Favorites</h3>
       </router-link>
-      <router-link to="/popular">
-        <h3>Popular drinks</h3>
+      <router-link to="/ordinary">
+        <h3>Ordinary</h3>
       </router-link>
+      <router-link to="/non_alcoholic">
+        <h3>Non alcoholic</h3>
+      </router-link>
+      </div>
     </nav>
   </header>
 </template>
@@ -21,7 +26,6 @@
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@700&display=swap");
-
 
 .logo {
   font-size: 3rem;
@@ -35,7 +39,8 @@
 header {
   width: 100%;
   height: 5.5rem;
-  background-color: #3d008d;
+  /*background-color: #5247ea;*/
+  background-image: linear-gradient(to right top, #30529d, #0083ac, #52bea1, #5ffb83);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,7 +48,6 @@ header {
   position: fixed;
   top: 0
 }
-
 
 header a {
   text-decoration: none;
@@ -55,6 +59,10 @@ header a {
 
 a.router-link-active {
   border: 1px solid #f391e3;
+}
+
+.container {
+  display: flex;
 }
 
 h1 {
@@ -76,7 +84,7 @@ header nav {
   width: 90%;
   margin: auto;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
 }
 
