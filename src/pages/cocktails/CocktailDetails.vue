@@ -21,8 +21,8 @@
             <p class="star__text">Add to favorites</p>
           </div>
           <div v-else>
-          <img src="@/assets/solidStar.svg" @click="deleteFavorite" class="star__icon"/>
-          <p class="star__text">Remove from favorites</p>
+            <img src="@/assets/solidStar.svg" @click="deleteFavorite" class="star__icon"/>
+            <p class="star__text">Remove from favorites</p>
           </div>
         </div>
         <h1>{{ drinkDetails.strDrink }}</h1>
@@ -30,11 +30,12 @@
           <img :src="drinkDetails.strDrinkThumb">
         </div>
         <h3>Ingredients:</h3>
-        <ul></ul>
-        <li v-for="(ingredient, key) in drinkIngredients" :key="key">
-          {{ ingredient.name }}
-          <span v-if="ingredient.measure">: {{ ingredient.measure }}</span>
-        </li>
+        <ul>
+          <li v-for="(ingredient, key) in drinkIngredients" :key="key">
+            {{ ingredient.name }}
+            <span v-if="ingredient.measure">: {{ ingredient.measure }}</span>
+          </li>
+        </ul>
         <h3>Instructions:</h3>
         <p>{{ drinkDetails.strInstructions }}</p>
         <h3>Glass type:</h3>
@@ -82,7 +83,6 @@ export default {
           }
         }
       }).filter(Boolean);
-      console.log(this.drinkIngredients)
     },
     addFavorite() {
       this.favorites.push(this.id);
@@ -131,7 +131,6 @@ export default {
   top: 0;
   left: 0;
   display: flex;
-  //width: 100%;
   height: 40px;
 
   &__icon {
@@ -140,10 +139,9 @@ export default {
     left: 0;
 
     &:hover + .star__text {
-        display: inline-block;
+      display: inline-block;
     }
   }
-
 
   &__text {
     background-color: rgba(0, 0, 0, .15);
@@ -153,16 +151,10 @@ export default {
     position: relative;
     top: -15px;
   }
-
-
 }
 
 li {
   list-style: none;
-}
-
-.icon {
-
 }
 
 h1 {
