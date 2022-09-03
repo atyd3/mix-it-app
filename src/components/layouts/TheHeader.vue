@@ -5,6 +5,7 @@
         <img src="@/assets/logo.svg" class="logo-img"/>
         <h1 class="logo">Mix it!</h1>
       </router-link>
+      <search-cocktail></search-cocktail>
       <div class="container">
       <router-link to="/favorites">
         <h3>Favorites</h3>
@@ -23,6 +24,10 @@
   </header>
 </template>
 <script>
+import SearchCocktail from '@/components/cocktails/SearchCocktail'
+export default {
+  components: {SearchCocktail}
+}
 
 </script>
 

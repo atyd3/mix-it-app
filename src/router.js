@@ -1,4 +1,5 @@
 import {createRouter, createWebHistory} from "vue-router";
+// import route from 'vue';
 
 import CocktailsList from './pages/cocktails/CocktailsList';
 import CocktailDetails from './pages/cocktails/CocktailDetails.vue';
@@ -34,6 +35,12 @@ const router = createRouter({
             path: '/non_alcoholic', component: CocktailsList,
             props: {
                 endpoint: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic'
+            }
+        },
+        {
+            path: '/browse', component: CocktailsList,
+            props: {
+                endpoint: `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`
             }
         },
         {path: '/:notFound(.*)', component: NotFound}

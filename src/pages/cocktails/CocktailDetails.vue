@@ -16,8 +16,14 @@
     <div v-else>
       <base-card>
         <div class="star">
-          <img v-if="!isFavorite" src="@/assets/outlineStar.svg" @click="addFavorite" class="icon"/>
-          <img v-else src="@/assets/solidStar.svg" @click="deleteFavorite" class="icon"/>
+          <div v-if="!isFavorite">
+            <img src="@/assets/outlineStar.svg" @click="addFavorite" class="star__icon"/>
+            <p class="star__text">Add to favorites</p>
+          </div>
+          <div v-else>
+          <img src="@/assets/solidStar.svg" @click="deleteFavorite" class="star__icon"/>
+          <p class="star__text">Remove from favorites</p>
+          </div>
         </div>
         <h1>{{ drinkDetails.strDrink }}</h1>
         <div class="img-box">
@@ -114,8 +120,8 @@ export default {
 }
 </script>
 
-<style scoped>
-.img-box img{
+<style lang="scss" scoped>
+.img-box img {
   width: 25rem;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
@@ -125,6 +131,30 @@ export default {
   top: 0;
   left: 0;
   display: flex;
+  //width: 100%;
+  height: 40px;
+
+  &__icon {
+    width: 2.4rem;
+    position: relative;
+    left: 0;
+
+    &:hover + .star__text {
+        display: inline-block;
+    }
+  }
+
+
+  &__text {
+    background-color: rgba(0, 0, 0, .15);
+    border-radius: 10px;
+    padding: 7px;
+    display: none;
+    position: relative;
+    top: -15px;
+  }
+
+
 }
 
 li {
@@ -132,8 +162,7 @@ li {
 }
 
 .icon {
-  width: 2.4rem;
-  display: inline-block;
+
 }
 
 h1 {

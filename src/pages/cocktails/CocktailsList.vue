@@ -37,6 +37,7 @@ export default {
         this.cocktails = await fetchCocktails(endpoint);
       } catch (error) {
         this.error = error.message || 'Failed to load data, try again later';
+        console.log('error endpoint', endpoint)
       }
       this.isLoading = false;
     },
@@ -46,11 +47,24 @@ export default {
   },
   watch: {
     endpoint(nVal) {
-      this.loadCocktails(nVal);
+      if (this.$route.query.s) {
+        this.loadCocktails(nVal + this.$route.query.s);
+      } else {
+        this.loadCocktails(nVal);
+      }
+    },
+    $route(nVal, oVal) {
+      if (oVal.query.s) {
+        this.loadCocktails(this.endpoint + nVal.query.s);
+      }
     }
   },
   created() {
-    this.loadCocktails(this.endpoint);
+    if (this.$route.query.s) {
+      this.loadCocktails(this.endpoint + this.$route.query.s);
+    } else {
+      this.loadCocktails(this.endpoint);
+    }
   }
 }
 </script>
