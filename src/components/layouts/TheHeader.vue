@@ -58,8 +58,9 @@ export default {
   }
 
   &__logo-txt {
-      font-size: 3rem;
-      font-family: 'Oleo Script Swash Caps', cursive;
+    font-size: 3rem;
+    font-family: 'Oleo Script Swash Caps', cursive;
+    white-space: nowrap;
   }
 
   &__container {
@@ -67,78 +68,15 @@ export default {
   }
 
   &__link {
-      text-decoration: none;
-      color: black;
-      display: flex;
-      padding: 0.75rem .5rem;
-      border: 1px solid transparent;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    padding: 0.75rem .5rem;
+    border: 1px solid transparent;
   }
 
   .router-link-active {
     text-decoration: underline;
   }
 }
-
-//
-//.logo {
-//  font-size: 3rem;
-//  font-family: 'Oleo Script Swash Caps', cursive;
-//}
-//
-//.logo-img {
-//  height: 4rem;
-//}
-//
-//header {
-//  width: 100%;
-//  height: 5.5rem;
-//  background-image: linear-gradient(to right top, #30529d, #0083ac, #52bea1, #5ffb83);
-//  display: flex;
-//  justify-content: center;
-//  align-items: center;
-//  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-//  position: fixed;
-//  top: 0;
-//}
-//
-//header a {
-//  text-decoration: none;
-//  color: black;
-//  display: flex;
-//  padding: 0.75rem .5rem;
-//  border: 1px solid transparent;
-//}
-//
-//a.router-link-active {
-//  text-decoration: underline;
-//}
-//
-//.container {
-//  display: flex;
-//}
-//
-//h1 {
-//  margin: 0;
-//}
-//
-//h1 a {
-//  color: white;
-//  margin: 0;
-//}
-//
-//h1 a:hover,
-//h1 a:active,
-//h1 a.router-link-active {
-//  border-color: transparent;
-//}
-//
-//header nav {
-//  width: 90%;
-//  margin: auto;
-//  display: flex;
-//  justify-content: space-between;
-//  align-items: center;
-//}
-//
-
 </style>
