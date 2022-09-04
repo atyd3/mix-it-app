@@ -2,7 +2,7 @@
   <form>
     <div class="form-control">
       <input type="text" v-model="searchTerm" placeholder="Search for a cocktail...">
-      <button @click.prevent>
+      <button @click.prevent="search">
         <router-link :to="searchLink">
           <img src="@/assets/search.svg"/>
         </router-link>
@@ -26,6 +26,11 @@ export default {
       }
     }
   },
+  methods: {
+    search(){
+      this.searchTerm = '';
+    }
+  }
 }
 </script>
 

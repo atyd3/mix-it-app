@@ -23,7 +23,9 @@ export default {
 
 <style scoped>
 img {
-  width: 10rem
+  width: 15rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 a {
@@ -32,5 +34,9 @@ a {
 
 li {
   list-style: none;
+}
+
+h1 {
+  font-family: 'Bree Serif', serif;
 }
 </style>

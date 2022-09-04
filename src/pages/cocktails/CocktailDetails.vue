@@ -14,32 +14,36 @@
       </base-card>
     </div>
     <div v-else>
-      <base-card>
-        <div class="star">
-          <div v-if="!isFavorite">
-            <img src="@/assets/outlineStar.svg" @click="addFavorite" class="star__icon"/>
-            <p class="star__text">Add to favorites</p>
+      <base-card class="box">
+        <div>
+          <div class="star">
+            <div v-if="!isFavorite">
+              <img src="@/assets/outlineStar.svg" @click="addFavorite" class="star__icon"/>
+              <p class="star__text">Add to favorites</p>
+            </div>
+            <div v-else>
+              <img src="@/assets/solidStar.svg" @click="deleteFavorite" class="star__icon"/>
+              <p class="star__text">Remove from favorites</p>
+            </div>
           </div>
-          <div v-else>
-            <img src="@/assets/solidStar.svg" @click="deleteFavorite" class="star__icon"/>
-            <p class="star__text">Remove from favorites</p>
+          <h1>{{ drinkDetails.strDrink }}</h1>
+          <div>
+            <img class="box__img" :src="drinkDetails.strDrinkThumb">
           </div>
         </div>
-        <h1>{{ drinkDetails.strDrink }}</h1>
-        <div class="img-box">
-          <img :src="drinkDetails.strDrinkThumb">
+        <div class="box__recipe">
+          <h3>Ingredients:</h3>
+          <ul>
+            <li v-for="(ingredient, key) in drinkIngredients" :key="key">
+              {{ ingredient.name }}
+              <span v-if="ingredient.measure">: {{ ingredient.measure }}</span>
+            </li>
+          </ul>
+          <h3>Instructions:</h3>
+          <p>{{ drinkDetails.strInstructions }}</p>
+          <h3>Glass type:</h3>
+          <p>{{ drinkDetails.strGlass }}</p>
         </div>
-        <h3>Ingredients:</h3>
-        <ul>
-          <li v-for="(ingredient, key) in drinkIngredients" :key="key">
-            {{ ingredient.name }}
-            <span v-if="ingredient.measure">: {{ ingredient.measure }}</span>
-          </li>
-        </ul>
-        <h3>Instructions:</h3>
-        <p>{{ drinkDetails.strInstructions }}</p>
-        <h3>Glass type:</h3>
-        <p>{{ drinkDetails.strGlass }}</p>
       </base-card>
     </div>
   </div>
@@ -121,12 +125,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.img-box img {
-  width: 25rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-}
-
 .star {
   top: 0;
   left: 0;
@@ -153,12 +151,39 @@ export default {
   }
 }
 
-li {
+li,p  {
   list-style: none;
+  font-size: 1.1rem;
 }
 
 h1 {
   display: inline-block;
+  font-family: 'Bree Serif', serif;
+}
+
+.box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 90%;
+  max-width: 65rem;
+  padding: 1.5rem;
+
+  &__img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  }
+
+  &__recipe {
+    padding: 2rem;
+    display: grid;
+    place-content: center;
+  }
+}
+
+h3 {
+  margin: 1.5rem 0 .5rem 0;
+  font-size: 1.5rem;
 }
 
 </style>

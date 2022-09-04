@@ -16,6 +16,9 @@
         <router-link to="/ordinary" class="nav__link">
           <h3>Ordinary drinks</h3>
         </router-link>
+        <router-link to="/shots" class="nav__link">
+          <h3>Shots</h3>
+        </router-link>
         <router-link to="/non_alcoholic" class="nav__link">
           <h3>Non-alcoholic</h3>
         </router-link>

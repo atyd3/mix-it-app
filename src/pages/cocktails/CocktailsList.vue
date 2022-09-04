@@ -6,7 +6,7 @@
     <div v-if="isLoading">
       <base-spinner></base-spinner>
     </div>
-    <ul v-else>
+    <ul v-else-if="cocktails.length>0">
       <cocktail-item
           v-for="cocktail in cocktails"
           :key="cocktail.id"
@@ -15,13 +15,18 @@
           :image="cocktail.image"
       ></cocktail-item>
     </ul>
+    <base-card v-else>
+      Sorry, we can't find your cocktail. Try to search for a different name
+    </base-card>
   </div>
 </template>
 
 <script>
 import fetchCocktails from "@/mixins/fetchCocktails";
+import BaseCard from "@/components/UI/BaseCard";
 
 export default {
+  components: {BaseCard},
   props: {endpoint: {type: String, required: true}},
   data() {
     return {

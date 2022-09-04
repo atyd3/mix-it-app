@@ -32,6 +32,12 @@ const router = createRouter({
             }
         },
         {
+            path: '/shots', component: CocktailsList,
+            props: {
+                endpoint: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Shot'
+            }
+        },
+        {
             path: '/non_alcoholic', component: CocktailsList,
             props: {
                 endpoint: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic'
