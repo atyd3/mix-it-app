@@ -125,6 +125,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/styles/_mixins.scss";
+
 .star {
   top: 0;
   left: 0;
@@ -168,16 +170,30 @@ h1 {
   max-width: 65rem;
   padding: 1.5rem;
 
+  @include respond(tab-port){
+    width: 80%;
+    grid-template-columns: 1fr;
+
+  }
+
   &__img {
     width: 100%;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+
+    @include respond(tab-port){
+      width: 75%;
+    }
   }
 
   &__recipe {
     padding: 2rem;
     display: grid;
     place-content: center;
+
+    @include respond(tab-port){
+    padding: 1rem;
+    }
   }
 }
 
@@ -185,5 +201,7 @@ h3 {
   margin: 1.5rem 0 .5rem 0;
   font-size: 1.5rem;
 }
+
+
 
 </style>

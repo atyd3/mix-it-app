@@ -33,6 +33,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/_mixins.scss';
 
 .form {
   display: flex;
@@ -55,6 +56,7 @@ export default {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     font-size: 1.1rem;
     width: 100%;
+    text-overflow: ellipsis;
 
     &:focus {
       outline: 1px solid gray;
