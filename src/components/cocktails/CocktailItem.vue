@@ -50,9 +50,10 @@ export default {
 
   &__title {
     font-family: 'Bree Serif', serif;
+    margin-top: 0;
 
     @include respond(phone) {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
   }
 }

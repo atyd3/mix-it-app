@@ -75,14 +75,13 @@ export default {
 
   transition: all .1s;
 
+  @include respond(tab-land) {
+    gap: 1.5rem;
+  }
 
   @include respond(phone) {
     gap: 1rem;
     justify-content: flex-start;
-  }
-
-  @include respond(tab-land) {
-    gap: 1.5rem;
   }
 
   &__logo-img {
@@ -90,13 +89,14 @@ export default {
     position: relative;
     top: 10px;
 
+    @include respond(tab-land) {
+      top: 5px;
+    }
+
     @include respond(phone) {
       display: block;
       height: 3.2rem;
-    }
-
-    @include respond(tab-land) {
-      top: 5px;
+      top: 0px;
     }
   }
 
@@ -157,8 +157,6 @@ export default {
       border-radius: 10px;
     }
   }
-
-
 }
 
 .transform {
@@ -171,7 +169,7 @@ export default {
   }
   .nav {
     &__link {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       display: block;
       padding: 5px 20px;
 
