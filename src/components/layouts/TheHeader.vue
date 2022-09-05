@@ -6,7 +6,7 @@
         <h1 class="nav__logo-txt">Mix it!</h1>
       </router-link>
       <search-cocktail class="nav__search"></search-cocktail>
-      <div class="nav__container" @click="toggleNavigation">
+      <div class="nav__container" @click="toggleNavigation(this.isTransformed)">
         <router-link to="/favorites" class="nav__link">
           <h3>Favorites</h3>
         </router-link>
@@ -42,9 +42,10 @@ export default {
     }
   },
   methods: {
-    toggleNavigation() {
-      this.isTransformed = !this.isTransformed;
-      console.log(this.isTransformed)
+    toggleNavigation(open) {
+      if (open) {
+        this.isTransformed = !this.isTransformed;
+      }
     }
   }
 }
@@ -77,6 +78,7 @@ export default {
 
   @include respond(phone) {
     gap: 1rem;
+    justify-content: flex-start;
   }
 
   @include respond(tab-land) {
@@ -163,6 +165,10 @@ export default {
   height: 100vh;
   transition: all .3s ease-out;
 
+  @include respond(phone){
+    justify-content: center;
+
+  }
   .nav {
     &__link {
       font-size: 1.8rem;
@@ -173,6 +179,7 @@ export default {
         background-color: rgba(whitesmoke, .4);
         border-radius: 10px;
       }
+
       &--logo {
         display: none;
       }

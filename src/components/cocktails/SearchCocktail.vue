@@ -38,6 +38,10 @@ export default {
 .form {
   display: flex;
 
+  @include respond(phone){
+    width: 50vw;
+  }
+
   &__button {
     width: 2.2rem;
     height: 2.2rem;
@@ -55,8 +59,8 @@ export default {
     background-color: whitesmoke;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     font-size: 1.1rem;
-    width: 100%;
     text-overflow: ellipsis;
+    width: 100%;
 
     &:focus {
       outline: 1px solid gray;
