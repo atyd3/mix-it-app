@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="$router.push(searchLink)">
     <div class="form">
-      <input type="text" class="form__input" v-model="searchTerm" placeholder="Search for a cocktail..." required>
+      <input type="text" class="form__input" v-model="searchTerm" placeholder="Search..." required>
       <router-link :to="searchLink" @click="clearSearchTerm">
         <input type="submit" class="form__button" value="&#x1F50E;">
       </router-link>
@@ -59,7 +59,6 @@ export default {
     background-color: whitesmoke;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     font-size: 1.1rem;
-    text-overflow: ellipsis;
     width: 100%;
 
     &:focus {

@@ -34,10 +34,12 @@ button,
 a {
   text-decoration: none;
   padding: 0.75rem 1.5rem;
-  font: inherit;
-  background-color: #3a0061;
-  border: 1px solid #3a0061;
-  color: white;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #52bea1;
+  border: 1px solid #52bea1;
+  color: black;
   cursor: pointer;
   border-radius: 30px;
   margin-right: 0.5rem;

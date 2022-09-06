@@ -1,5 +1,10 @@
 <template>
   <the-header></the-header>
+  <base-dialog :show="!isAdult" title="Welcome!" @close="handleError">
+    <h3>
+      Are you over 21 years of age?
+    </h3>
+  </base-dialog>
   <router-view v-slot="slotProps">
     <transition name="route" mode="out-in">
       <component :is="slotProps.Component"></component>
@@ -14,6 +19,20 @@ export default {
   name: 'App',
   components: {
     TheHeader,
+  },
+  data(){
+    return {
+      isAdult: null,
+    }
+  },
+
+  methods: {
+    handleError() {
+      this.error = null;
+    }
+  },
+  created() {
+   console.log('created');
   }
 }
 </script>
@@ -41,6 +60,10 @@ body {
 
 h1 {
   margin: .5rem;
+}
+
+h3 {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 
 .route-enter-from {

@@ -2,14 +2,14 @@
   <teleport to="body">
     <div v-if="show" @click="tryClose" class="backdrop"></div>
     <transition name="dialog">
-    <dialog open v-if="show">
+    <dialog open v-if="show" class="dialog">
       <header>
         <slot name="header">
-          <h2>{{ title }}</h2>
+          <h2 class="dialog__header">{{ title }}</h2>
         </slot>
       </header>
       <section>
-        <slot></slot>
+        <slot class="dialog__message"></slot>
       </section>
       <menu v-if="!fixed">
         <slot name="actions">
@@ -50,18 +50,19 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
 .backdrop {
   position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 10;
 }
 
-dialog {
+.dialog {
   position: fixed;
   top: 20vh;
   left: 10%;
@@ -74,17 +75,16 @@ dialog {
   margin: 0;
   overflow: hidden;
   background-color: white;
-}
 
-header {
-  background-color: #3a0061;
-  color: white;
-  width: 100%;
-  padding: 1rem;
-}
-
-header h2 {
-  margin: 0;
+  &__header {
+    background-image: linear-gradient(to right top, #30529d, #0083ac, #52bea1, #5ffb83);
+    color: black;
+    width: 100%;
+    padding: 1rem;
+    margin: 0;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-size: 1.5rem;
+  }
 }
 
 section {
