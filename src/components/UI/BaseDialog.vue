@@ -61,9 +61,8 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import "@/styles/_mixins.scss";
-
 
 .backdrop {
   position: fixed;

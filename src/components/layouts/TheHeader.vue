@@ -10,6 +10,7 @@
         <router-link to="/favorites" class="nav__link">
           <h3>Favorites</h3>
         </router-link>
+        <div class="nav__container" v-if="adult !== 'notAdult'">
         <router-link to="/alcoholic" class="nav__link">
           <h3>Alcoholic drinks</h3>
         </router-link>
@@ -19,6 +20,7 @@
         <router-link to="/shots" class="nav__link">
           <h3>Shots</h3>
         </router-link>
+        </div>
         <router-link to="/non_alcoholic" class="nav__link">
           <h3>Non-alcoholic</h3>
         </router-link>
@@ -36,6 +38,13 @@ import SearchCocktail from '@/components/cocktails/SearchCocktail'
 
 export default {
   components: {SearchCocktail},
+  props: {
+    adult: {
+      type: String,
+      required: true,
+      default: 'adult'
+    }
+  },
   data() {
     return {
       isTransformed: false
@@ -47,7 +56,7 @@ export default {
         this.isTransformed = !this.isTransformed;
       }
     }
-  }
+  },
 }
 
 </script>

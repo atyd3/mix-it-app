@@ -23,7 +23,6 @@ export default {
       this.$emit('close')
     },
     allowNavigation(){
-      console.log('action1 listened')
       this.$emit('allow-navigation')
     },
     restrictedNavigation(){

@@ -60,22 +60,12 @@ const router = createRouter({
     ]
 });
 
-//sprawdzić czy w localstorage jest key: adult
-//jeśli nie ma key to wyświetlić modal przed wejściem na stronę
-//jeśli jest true to next()
-//jeśli jest false to next('/non-alco')
-
-
-router.beforeEach(function(to, _, next){
+router.beforeEach(function(to, from, next){
     const isAdult = JSON.parse(localStorage.getItem('isAdult'));
     if (to.meta.withAlcohol && isAdult === 'notAdult'){
-        console.log('withAlcohol');
-        console.log('router before each, isAdult: ', isAdult)
         next('/non_alcoholic')
     } else {
-        console.log('router before each')
         next()
-
     }
 })
 

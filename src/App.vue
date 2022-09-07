@@ -1,5 +1,5 @@
 <template>
-  <the-header></the-header>
+  <the-header :adult="isAdult"></the-header>
   <age-gate :show="ageGateOpen" @allowNavigation="allowNavigation" @restrictedNavigation="restrictedNavigation" @close="closeDialog"></age-gate>
   <router-view v-slot="slotProps">
     <transition name="route" mode="out-in">
@@ -12,6 +12,9 @@
 
 import TheHeader from "@/components/layouts/TheHeader";
 import AgeGate from "@/components/AgeGate";
+import bodyScrollToggle from 'body-scroll-toggle';
+
+
 export default {
   name: 'App',
   components: {
@@ -25,29 +28,38 @@ export default {
     }
   },
   methods: {
+    openDialog(){
+      if (!this.isAdult && this.$route.meta.withAlcohol) {
+        this.ageGateOpen = true;
+        bodyScrollToggle.disable();
+      }
+    },
     closeDialog(){
       this.ageGateOpen = false;
+      bodyScrollToggle.enable();
     },
     allowNavigation(){
       this.isAdult = true;
-      console.log('allow-navigation, adult true');
       localStorage.setItem('isAdult', JSON.stringify(this.isAdult));
       this.closeDialog();
     },
     restrictedNavigation(){
       this.isAdult = 'notAdult';
-      console.log('restricted, isAdult:', this.isAdult);
       localStorage.setItem('isAdult', JSON.stringify(this.isAdult));
       this.closeDialog();
-    }
+      this.$router.replace('/non_alcoholic');
+    },
 
   },
   created() {
+    this.openDialog();
     this.isAdult = JSON.parse(localStorage.getItem('isAdult'));
-    if (!this.isAdult) {
-      this.ageGateOpen = true;
+
+  },
+  watch: {
+    $route() {
+      this.openDialog();
     }
-   console.log('created, isAdult: ', this.isAdult);
   }
 }
 </script>

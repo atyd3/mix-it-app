@@ -29,7 +29,9 @@ export default{
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import "@/styles/_mixins.scss";
+
 button,
 a {
   text-decoration: none;
@@ -41,9 +43,14 @@ a {
   border: 1px solid #0083ac;
   color: black;
   cursor: pointer;
-  border-radius: 30px;
+  border-radius: 10px;
   margin-right: 0.5rem;
   display: inline-block;
+
+  @include respond(tab-port) {
+    font-size: 1rem;
+    padding: .6rem 1rem;
+  }
 }
 
 a:hover,
