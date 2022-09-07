@@ -1,10 +1,6 @@
 <template>
   <the-header></the-header>
-  <base-dialog :show="!isAdult" title="Welcome!" @close="handleError">
-    <h3>
-      Are you over 21 years of age?
-    </h3>
-  </base-dialog>
+  <age-gate :show="ageGateOpen" @allowNavigation="allowNavigation" @restrictedNavigation="restrictedNavigation" @close="closeDialog"></age-gate>
   <router-view v-slot="slotProps">
     <transition name="route" mode="out-in">
       <component :is="slotProps.Component"></component>
@@ -15,24 +11,43 @@
 <script>
 
 import TheHeader from "@/components/layouts/TheHeader";
+import AgeGate from "@/components/AgeGate";
 export default {
   name: 'App',
   components: {
     TheHeader,
+    AgeGate
   },
   data(){
     return {
       isAdult: null,
+      ageGateOpen: false
     }
   },
-
   methods: {
-    handleError() {
-      this.error = null;
+    closeDialog(){
+      this.ageGateOpen = false;
+    },
+    allowNavigation(){
+      this.isAdult = true;
+      console.log('allow-navigation, adult true');
+      localStorage.setItem('isAdult', JSON.stringify(this.isAdult));
+      this.closeDialog();
+    },
+    restrictedNavigation(){
+      this.isAdult = 'notAdult';
+      console.log('restricted, isAdult:', this.isAdult);
+      localStorage.setItem('isAdult', JSON.stringify(this.isAdult));
+      this.closeDialog();
     }
+
   },
   created() {
-   console.log('created');
+    this.isAdult = JSON.parse(localStorage.getItem('isAdult'));
+    if (!this.isAdult) {
+      this.ageGateOpen = true;
+    }
+   console.log('created, isAdult: ', this.isAdult);
   }
 }
 </script>

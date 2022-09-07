@@ -2,21 +2,24 @@
   <teleport to="body">
     <div v-if="show" @click="tryClose" class="backdrop"></div>
     <transition name="dialog">
-    <dialog open v-if="show" class="dialog">
-      <header>
-        <slot name="header">
-          <h2 class="dialog__header">{{ title }}</h2>
-        </slot>
-      </header>
-      <section>
-        <slot class="dialog__message"></slot>
-      </section>
-      <menu v-if="!fixed">
-        <slot name="actions">
-          <base-button @click="tryClose">Close</base-button>
-        </slot>
-      </menu>
-    </dialog>
+      <dialog open v-if="show" class="dialog">
+        <header>
+          <h2 class="dialog__header">
+            <slot name="header">{{ title }}</slot>
+          </h2>
+        </header>
+        <section>
+          <slot class="dialog__message"></slot>
+        </section>
+        <menu v-if="!fixed">
+          <base-button @click="action">
+            <slot name="action1">Close</slot>
+          </base-button>
+          <base-button mode="outline" @click="action2" v-if="$slots.action2">
+            <slot name="action2">Close</slot>
+          </base-button>
+        </menu>
+      </dialog>
     </transition>
   </teleport>
 </template>
@@ -38,7 +41,7 @@ export default {
       default: false,
     },
   },
-  emits: ['close'],
+  emits: ['close', 'action', 'action2'],
   methods: {
     tryClose() {
       if (this.fixed) {
@@ -46,11 +49,21 @@ export default {
       }
       this.$emit('close');
     },
+    action(){
+      this.$emit('action');
+      console.log('action1 emitted')
+    },
+    action2(){
+      this.$emit('action2');
+      console.log('action2 emitted')
+    }
   },
 };
 </script>
 
 <style scoped lang="scss">
+@import "@/styles/_mixins.scss";
+
 
 .backdrop {
   position: fixed;
@@ -65,21 +78,24 @@ export default {
 .dialog {
   position: fixed;
   top: 20vh;
-  left: 10%;
-  width: 80%;
+  width: 100%;
+  max-width: 42rem;
+
   z-index: 100;
   border-radius: 12px;
   border: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  padding: 0;
-  margin: 0;
+  margin: auto;
   overflow: hidden;
   background-color: white;
+
+  @include respond(tab-port){
+    width: 80%;
+  }
 
   &__header {
     background-image: linear-gradient(to right top, #30529d, #0083ac, #52bea1, #5ffb83);
     color: black;
-    width: 100%;
     padding: 1rem;
     margin: 0;
     font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -118,10 +134,4 @@ menu {
   transform: scale(1);
 }
 
-@media (min-width: 768px) {
-  dialog {
-    left: calc(50% - 20rem);
-    width: 40rem;
-  }
-}
 </style>

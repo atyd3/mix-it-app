@@ -1,6 +1,6 @@
 <template>
   <div>
-    <base-dialog :show="!!error" title="An error occured!" btn="Close" @close="handleError">
+    <base-dialog :show="!!error" title="An error occured!" @close="handleError">
       <p>{{ error }}</p>
     </base-dialog>
     <div v-if="isLoading">
@@ -173,7 +173,6 @@ h1 {
   @include respond(tab-port){
     width: 80%;
     grid-template-columns: 1fr;
-
   }
 
   &__img {

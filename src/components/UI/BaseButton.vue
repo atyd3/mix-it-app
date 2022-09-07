@@ -37,8 +37,8 @@ a {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   font-size: 1.1rem;
   font-weight: bold;
-  background-color: #52bea1;
-  border: 1px solid #52bea1;
+  background-color: #0083ac;
+  border: 1px solid #0083ac;
   color: black;
   cursor: pointer;
   border-radius: 30px;
@@ -50,8 +50,8 @@ a:hover,
 a:active,
 button:hover,
 button:active {
-  background-color: #270041;
-  border-color: #270041;
+  background-color: #30529d;
+  border-color: #30529d;
 }
 
 .flat {
@@ -63,13 +63,13 @@ button:active {
 .outline {
   background-color: transparent;
   border-color: #270041;
-  color: #270041;
+  color: black;
 }
 
 .flat:hover,
 .flat:active,
 .outline:hover,
 .outline:active {
-  background-color: #edd2ff;
+  background-color: #52bea1;
 }
 </style>

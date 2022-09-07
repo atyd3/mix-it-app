@@ -66,18 +66,17 @@ const router = createRouter({
 //jeśli jest false to next('/non-alco')
 
 
-// router.beforeEach(function(to, _, next){
-//
-//     if (to.meta.withAlcohol){
-//         console.log('withAlcohol');
-//         console.log('router before each')
-//         next('/non-alcoholic')
-//     } else {
-//         console.log('router before each')
-//
-//         next()
-//
-//     }
-// })
+router.beforeEach(function(to, _, next){
+    const isAdult = JSON.parse(localStorage.getItem('isAdult'));
+    if (to.meta.withAlcohol && isAdult === 'notAdult'){
+        console.log('withAlcohol');
+        console.log('router before each, isAdult: ', isAdult)
+        next('/non_alcoholic')
+    } else {
+        console.log('router before each')
+        next()
+
+    }
+})
 
 export default router;
