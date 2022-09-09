@@ -10,7 +10,7 @@
         <router-link to="/favorites" class="nav__link">
           <h3>Favorites</h3>
         </router-link>
-        <div class="nav__container" v-if="adult !== 'notAdult'">
+        <div class="nav__container" v-if="adult !== 'notAdult' || !adult">
         <router-link to="/alcoholic" class="nav__link">
           <h3>Alcoholic drinks</h3>
         </router-link>
@@ -40,7 +40,7 @@ export default {
   components: {SearchCocktail},
   props: {
     adult: {
-      type: String,
+      type: [String, null],
       required: true,
       default: 'adult'
     }

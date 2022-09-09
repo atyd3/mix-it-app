@@ -13,6 +13,11 @@
         <router-link to="/ordinary">ordinary drinks</router-link>
       </base-card>
     </div>
+    <div v-else-if="adult !== 'adult' && this.$route.meta.withAlcohol">
+      <base-card>
+        This cocktail contains alcohol and can be displayed only for adults.
+      </base-card>
+    </div>
     <div v-else>
       <base-card class="box">
         <div>
@@ -54,6 +59,8 @@ import BaseCard from "@/components/UI/BaseCard";
 
 export default {
   components: {BaseCard},
+  props: ['adult'],
+  emits: ['open-dialog'],
   data() {
     return {
       isLoading: false,
@@ -61,7 +68,7 @@ export default {
       drinkDetails: {},
       drinkIngredients: {},
       favorites: [],
-      error: null
+      error: null,
     }
   },
   methods: {
@@ -71,6 +78,10 @@ export default {
         const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=` + this.id);
         const responseData = await response.json();
         this.drinkDetails = responseData.drinks[0];
+        if (this.drinkDetails.strAlcoholic === 'Alcoholic'){
+          this.$route.meta = { withAlcohol: true }
+          this.$emit('open-dialog')
+        }
       } catch (error) {
         this.error = 'Loading data failed!'
       }
@@ -120,7 +131,8 @@ export default {
     $route() {
       this.id = this.$route.params.id;
       this.fetchCocktail();
-    }
+      console.log('this.$route:',this.$route)
+    },
   },
   created() {
     this.fetchCocktail();

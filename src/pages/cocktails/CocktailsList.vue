@@ -27,7 +27,17 @@ import BaseCard from "@/components/UI/BaseCard";
 
 export default {
   components: {BaseCard},
-  props: {endpoint: {type: String, required: true}},
+  props: {
+    endpoint: {
+      type: String,
+      required: true
+    },
+    adult: {
+      type: [String, null],
+      required: true,
+      default: 'adult'
+    }
+  },
   data() {
     return {
       cocktails: [],
@@ -42,7 +52,11 @@ export default {
     async loadCocktails(endpoint) {
       this.isLoading = true;
       try {
-        this.cocktails = await fetchCocktails(endpoint);
+        let cocktails = await fetchCocktails(endpoint);
+        if (this.adult === 'notAdult'){
+          cocktails = cocktails.filter( cocktail => cocktail.alcoholic !== 'Alcoholic')
+        }
+        this.cocktails = cocktails;
       } catch (error) {
         this.error = error.message || 'Failed to load data, try again later';
         console.log('error endpoint', endpoint)

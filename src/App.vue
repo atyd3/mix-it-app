@@ -3,7 +3,7 @@
   <age-gate :show="ageGateOpen" @allowNavigation="allowNavigation" @restrictedNavigation="restrictedNavigation"></age-gate>
   <router-view v-slot="slotProps">
     <transition name="route" mode="out-in">
-      <component :is="slotProps.Component"></component>
+      <component :is="slotProps.Component" :adult="isAdult" @openDialog="openDialog"></component>
     </transition>
   </router-view>
 </template>

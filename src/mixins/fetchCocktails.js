@@ -7,7 +7,8 @@ export default async function fetchCocktails(endpoint) {
         const cocktail = {
             id: drinks[key].idDrink,
             name: drinks[key].strDrink,
-            image: drinks[key].strDrinkThumb
+            image: drinks[key].strDrinkThumb,
+            alcoholic: drinks[key].strAlcoholic
         }
         cocktails.push(cocktail)
     }
