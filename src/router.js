@@ -12,7 +12,6 @@ const router = createRouter({
     scrollBehavior(to, from, savedPosition) {
         return new Promise((resolve) => {
             if (savedPosition) {
-                console.log(router)
                 setTimeout(() => {
                     resolve(savedPosition)
                 }, 600)

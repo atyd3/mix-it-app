@@ -51,11 +51,9 @@ export default {
     },
     action(){
       this.$emit('action');
-      console.log('action1 emitted')
     },
     action2(){
       this.$emit('action2');
-      console.log('action2 emitted')
     }
   },
 };

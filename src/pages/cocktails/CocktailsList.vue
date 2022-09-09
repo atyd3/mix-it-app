@@ -34,8 +34,7 @@ export default {
     },
     adult: {
       type: [String, null],
-      required: true,
-      default: 'adult'
+      required: true
     }
   },
   data() {
@@ -46,9 +45,6 @@ export default {
     }
   },
   methods: {
-    onClickHandler(page){
-      console.log(page)
-    },
     async loadCocktails(endpoint) {
       this.isLoading = true;
       try {
@@ -59,7 +55,6 @@ export default {
         this.cocktails = cocktails;
       } catch (error) {
         this.error = error.message || 'Failed to load data, try again later';
-        console.log('error endpoint', endpoint)
       }
       this.isLoading = false;
     },

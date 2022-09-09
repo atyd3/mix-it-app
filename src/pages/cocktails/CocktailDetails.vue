@@ -59,7 +59,12 @@ import BaseCard from "@/components/UI/BaseCard";
 
 export default {
   components: {BaseCard},
-  props: ['adult'],
+  props: {
+    adult: {
+      type: [String, null],
+      required: true,
+    }
+  },
   emits: ['open-dialog'],
   data() {
     return {
@@ -78,8 +83,8 @@ export default {
         const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=` + this.id);
         const responseData = await response.json();
         this.drinkDetails = responseData.drinks[0];
-        if (this.drinkDetails.strAlcoholic === 'Alcoholic'){
-          this.$route.meta = { withAlcohol: true }
+        if (this.drinkDetails.strAlcoholic === 'Alcoholic') {
+          this.$route.meta = {withAlcohol: true}
           this.$emit('open-dialog')
         }
       } catch (error) {
@@ -114,12 +119,7 @@ export default {
       }
     },
     handleError() {
-      console.log('handle error',this.error)
       this.error = null;
-    },
-    goBack(){
-    this.$router.go(-1);
-    console.log(this.$router)
     }
   },
   computed: {
@@ -131,7 +131,6 @@ export default {
     $route() {
       this.id = this.$route.params.id;
       this.fetchCocktail();
-      console.log('this.$route:',this.$route)
     },
   },
   created() {
@@ -170,7 +169,7 @@ export default {
   }
 }
 
-li,p  {
+li, p {
   list-style: none;
   font-size: 1.1rem;
 }
@@ -188,7 +187,7 @@ h1 {
   padding: 1.5rem;
   margin-top: 3rem;
 
-  @include respond(tab-port){
+  @include respond(tab-port) {
     width: 80%;
     grid-template-columns: 1fr;
   }
@@ -198,7 +197,7 @@ h1 {
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 
-    @include respond(tab-port){
+    @include respond(tab-port) {
       width: 50%;
     }
   }
@@ -208,8 +207,8 @@ h1 {
     display: grid;
     place-content: center;
 
-    @include respond(tab-port){
-    padding: 1rem;
+    @include respond(tab-port) {
+      padding: 1rem;
     }
   }
 }
@@ -218,7 +217,6 @@ h3 {
   margin: 1.5rem 0 .5rem 0;
   font-size: 1.5rem;
 }
-
 
 
 </style>

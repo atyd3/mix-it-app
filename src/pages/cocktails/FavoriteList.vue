@@ -51,7 +51,6 @@ export default {
     },
     getFavoriteCocktails() {
       const storage = JSON.parse(localStorage.getItem('favoriteDrinks'));
-      console.log(storage)
       if (storage) {
         this.favorites = storage
       }
