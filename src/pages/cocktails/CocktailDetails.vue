@@ -1,6 +1,6 @@
 <template>
   <div>
-    <base-dialog :show="!!error" title="An error occured!" @close="handleError">
+    <base-dialog :show="!!error" title="An error occured!" @close="handleError" @action="handleError">
       <p>{{ error }}</p>
     </base-dialog>
     <div v-if="isLoading">
@@ -103,7 +103,12 @@ export default {
       }
     },
     handleError() {
+      console.log('handle error',this.error)
       this.error = null;
+    },
+    goBack(){
+    this.$router.go(-1);
+    console.log(this.$router)
     }
   },
   computed: {
@@ -169,6 +174,7 @@ h1 {
   width: 90%;
   max-width: 65rem;
   padding: 1.5rem;
+  margin-top: 3rem;
 
   @include respond(tab-port){
     width: 80%;
@@ -181,7 +187,7 @@ h1 {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 
     @include respond(tab-port){
-      width: 75%;
+      width: 50%;
     }
   }
 

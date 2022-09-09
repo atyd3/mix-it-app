@@ -6,7 +6,6 @@ import BaseCard from './components/UI/BaseCard.vue';
 import BaseButton from "./components/UI/BaseButton.vue";
 import BaseSpinner from './components/UI/BaseSpinner.vue';
 import BaseDialog from "@/components/UI/BaseDialog";
-
 import CocktailItem from './components/cocktails/CocktailItem.vue'
 
 
@@ -17,6 +16,7 @@ app.component('base-button', BaseButton)
 app.component('base-spinner', BaseSpinner)
 app.component('base-dialog', BaseDialog)
 app.component('cocktail-item', CocktailItem)
+
 
 app.use(router)
 app.mount('#app')

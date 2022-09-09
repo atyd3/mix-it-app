@@ -125,6 +125,7 @@ export default {
 
   &__container {
     display: flex;
+    align-items: center;
 
     @include respond(tab-port) {
       display: none;

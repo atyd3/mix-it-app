@@ -1,6 +1,6 @@
 <template>
   <div>
-    <base-dialog :show="!!error" title="An error occured!" @close="handleError">
+    <base-dialog :show="!!error" title="An error occured!" @close="handleError" @action="handleError">
       <p>{{ error }}</p>
     </base-dialog>
     <div v-if="isLoading">
@@ -36,6 +36,9 @@ export default {
     }
   },
   methods: {
+    onClickHandler(page){
+      console.log(page)
+    },
     async loadCocktails(endpoint) {
       this.isLoading = true;
       try {
@@ -73,3 +76,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+html {
+  scroll-behavior: smooth;
+}
+
+</style>

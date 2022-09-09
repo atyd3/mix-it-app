@@ -1,6 +1,6 @@
 <template>
   <the-header :adult="isAdult"></the-header>
-  <age-gate :show="ageGateOpen" @allowNavigation="allowNavigation" @restrictedNavigation="restrictedNavigation" @close="closeDialog"></age-gate>
+  <age-gate :show="ageGateOpen" @allowNavigation="allowNavigation" @restrictedNavigation="restrictedNavigation"></age-gate>
   <router-view v-slot="slotProps">
     <transition name="route" mode="out-in">
       <component :is="slotProps.Component"></component>
@@ -39,7 +39,7 @@ export default {
       bodyScrollToggle.enable();
     },
     allowNavigation(){
-      this.isAdult = true;
+      this.isAdult = 'adult';
       localStorage.setItem('isAdult', JSON.stringify(this.isAdult));
       this.closeDialog();
     },
@@ -77,6 +77,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  height: 100vh;
 }
 
 body {
