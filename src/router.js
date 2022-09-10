@@ -28,14 +28,14 @@ const router = createRouter({
         {
             path: '/cocktails',
             component: CocktailsList,
-            meta: {withAlcohol: true},
+            meta: { withAlcohol: true },
             props: {
                 endpoint: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail'
             },
         },
         {
             path: '/alcoholic', component: CocktailsList,
-            meta: {withAlcohol: true},
+            meta: { withAlcohol: true },
             props: {
                 endpoint: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic'
             }
@@ -51,7 +51,7 @@ const router = createRouter({
         {
             path: '/ordinary',
             component: CocktailsList,
-            meta: {withAlcohol: true},
+            meta: { withAlcohol: true },
             props: {
                 endpoint: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink'
             }
@@ -59,7 +59,7 @@ const router = createRouter({
         {
             path: '/shots',
             component: CocktailsList,
-            meta: {withAlcohol: true},
+            meta: { withAlcohol: true },
             props: {
                 endpoint: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Shot'
             }
@@ -67,7 +67,7 @@ const router = createRouter({
         {
             path: '/non_alcoholic',
             component: CocktailsList,
-            meta: {withAlcohol: false},
+            meta: { withAlcohol: false },
             props: {
                 endpoint: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic'
             }
