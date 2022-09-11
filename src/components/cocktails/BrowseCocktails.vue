@@ -1,7 +1,7 @@
 <template>
-  <base-card>
+  <base-card class="browse">
     <h3>Browse cocktails by first letter</h3>
-    <div class="browse">
+    <div class="browse__box">
       <h3 v-for="letter in letters" :key="letter" class="browse__item">
         <router-link :to="browseLink" @click="chooseLetter(letter)">{{ letter }}</router-link>
         /
@@ -37,14 +37,23 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "@/styles/_mixins.scss";
+
 h3 {
-  margin: 1rem;
+  margin: 1rem 0;
 }
 
 .browse {
-  display: flex;
-  width: 100%;
-  justify-content: center;
+  @include respond(tab-port){
+    width: 70%;
+  }
+
+  &__box {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 
   &__item {
     display: flex;

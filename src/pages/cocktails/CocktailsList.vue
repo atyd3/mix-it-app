@@ -88,8 +88,10 @@ export default {
   },
   computed: {
     showBrowse() {
-      if (this.adult === 'adult' && this.$route.path === '/cocktails' ||
-          this.adult === 'notAdult' && this.$route.path === '/non_alcoholic') {
+      if (
+          this.adult === 'adult' && this.$route.path === '/cocktails' ||
+          this.adult === 'notAdult' && this.$route.path === '/non_alcoholic')
+      {
         return true
       }
       return false

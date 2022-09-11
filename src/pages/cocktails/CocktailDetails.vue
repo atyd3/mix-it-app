@@ -50,10 +50,6 @@
           <p>{{ drinkDetails.strGlass }}</p>
         </div>
       </base-card>
-
-      <pre>
-        {{drinkDetails}}
-      </pre>
           </div>
   </div>
 </template>
