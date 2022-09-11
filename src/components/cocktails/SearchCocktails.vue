@@ -20,7 +20,7 @@ export default {
   computed: {
     searchLink() {
       return {
-        path: '/browse', query: {s: this.searchTerm}
+        path: '/search', query: {s: this.searchTerm}
       }
     }
   },

@@ -3,6 +3,7 @@ import {createRouter, createWebHistory} from "vue-router";
 
 import CocktailsList from './pages/cocktails/CocktailsList';
 import CocktailDetails from './pages/cocktails/CocktailDetails.vue';
+import BrowseCocktails from './components/cocktails/BrowseCocktails.vue';
 import FavoriteList from './pages/cocktails/FavoriteList.vue';
 import NotFound from './pages/NotFound.vue';
 
@@ -32,6 +33,16 @@ const router = createRouter({
             props: {
                 endpoint: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail'
             },
+            children: [
+                {
+                    path: '',
+                    component: BrowseCocktails
+                },
+            ]
+        },
+        {
+            path: '/cocktails/id=:id',
+            component: CocktailDetails
         },
         {
             path: '/alcoholic', component: CocktailsList,
@@ -39,10 +50,6 @@ const router = createRouter({
             props: {
                 endpoint: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic'
             }
-        },
-        {
-            path: '/cocktails/:id',
-            component: CocktailDetails
         },
         {
             path: '/favorites',
@@ -70,13 +77,26 @@ const router = createRouter({
             meta: { withAlcohol: false },
             props: {
                 endpoint: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic'
+            },
+            children: [
+                {
+                    path: '',
+                    component: BrowseCocktails
+                },
+            ]
+        },
+        {
+            path: '/search',
+            component: CocktailsList,
+            props: {
+                endpoint: `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`
             }
         },
         {
             path: '/browse',
             component: CocktailsList,
             props: {
-                endpoint: `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`
+                endpoint: `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=`
             }
         },
         {

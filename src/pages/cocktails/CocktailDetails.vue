@@ -50,7 +50,11 @@
           <p>{{ drinkDetails.strGlass }}</p>
         </div>
       </base-card>
-    </div>
+
+      <pre>
+        {{drinkDetails}}
+      </pre>
+          </div>
   </div>
 </template>
 
@@ -83,7 +87,7 @@ export default {
         const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=` + this.id);
         const responseData = await response.json();
         this.drinkDetails = responseData.drinks[0];
-        if (this.drinkDetails.strAlcoholic === 'Alcoholic') {
+        if (this.drinkDetails.strAlcoholic === 'Alcoholic' || this.drinkDetails.strAlcoholic === 'Optional alcohol') {
           this.$route.meta = {withAlcohol: true}
           this.$emit('open-dialog')
         }
@@ -136,6 +140,7 @@ export default {
   created() {
     this.fetchCocktail();
     this.getFavoriteCocktails();
+    console.log('this.$route.params',this.$route.params);
   }
 }
 </script>

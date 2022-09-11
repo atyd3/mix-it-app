@@ -3,6 +3,7 @@
     <base-dialog :show="!!error" title="An error occured!" @close="handleError" @action="handleError">
       <p>{{ error }}</p>
     </base-dialog>
+    <router-view v-if="showBrowse"></router-view>
     <div v-if="isLoading">
       <base-spinner></base-spinner>
     </div>
@@ -49,8 +50,8 @@ export default {
       this.isLoading = true;
       try {
         let cocktails = await fetchCocktails(endpoint);
-        if (this.adult === 'notAdult'){
-          cocktails = cocktails.filter( cocktail => cocktail.alcoholic !== 'Alcoholic')
+        if (this.adult === 'notAdult') {
+          cocktails = cocktails.filter(cocktail => cocktail.alcoholic !== 'Alcoholic' && cocktail.alcoholic !== 'Optional alcohol')
         }
         this.cocktails = cocktails;
       } catch (error) {
@@ -71,7 +72,7 @@ export default {
       }
     },
     $route(nVal, oVal) {
-      if (oVal.query.s) {
+      if (oVal.query.s && nVal.query.s) {
         this.loadCocktails(this.endpoint + nVal.query.s);
       }
     }
@@ -81,6 +82,17 @@ export default {
       this.loadCocktails(this.endpoint + this.$route.query.s);
     } else {
       this.loadCocktails(this.endpoint);
+    }
+    console.log('this.showBrowse', this.showBrowse);
+    console.log(this.$route.path)
+  },
+  computed: {
+    showBrowse() {
+      if (this.adult === 'adult' && this.$route.path === '/cocktails' ||
+          this.adult === 'notAdult' && this.$route.path === '/non_alcoholic') {
+        return true
+      }
+      return false
     }
   }
 }
