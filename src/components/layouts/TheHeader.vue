@@ -5,7 +5,7 @@
         <img src="@/assets/logo.svg" class="nav__logo-img"/>
         <h1 class="nav__logo-txt">Mix it!</h1>
       </router-link>
-      <search-cocktail class="nav__search"></search-cocktail>
+      <search-cocktails class="nav__search"></search-cocktails>
       <div class="nav__container" @click="toggleNavigation(this.isTransformed)">
         <router-link to="/favorites" class="nav__link">
           <h3>Favorites</h3>
@@ -34,10 +34,10 @@
   </header>
 </template>
 <script>
-import SearchCocktail from '@/components/cocktails/SearchCocktail'
+import SearchCocktails from '@/components/cocktails/SearchCocktails'
 
 export default {
-  components: {SearchCocktail},
+  components: {SearchCocktails},
   props: {
     adult: {
       type: [String, null],
