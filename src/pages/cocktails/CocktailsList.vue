@@ -1,6 +1,6 @@
 <template>
   <div>
-    <base-dialog :show="!!error" title="An error occured!" @close="handleError" @action="handleError">
+    <base-dialog :show="!!error" title="An error occurred!" @close="handleError" @action="handleError">
       <p>{{ error }}</p>
     </base-dialog>
     <router-view v-if="showBrowse"></router-view>
