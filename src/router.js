@@ -1,5 +1,4 @@
 import {createRouter, createWebHistory} from "vue-router";
-// import route from 'vue';
 
 import CocktailsList from './pages/cocktails/CocktailsList';
 import CocktailDetails from './pages/cocktails/CocktailDetails.vue';
