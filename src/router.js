@@ -22,11 +22,8 @@ const router = createRouter({
     },
     routes: [
         {
-            path: '/',
-            redirect: '/cocktails'
-        },
-        {
             path: '/cocktails',
+            alias: '/',
             component: CocktailsList,
             meta: { withAlcohol: true },
             props: {
