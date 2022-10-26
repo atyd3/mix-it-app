@@ -1,4 +1,4 @@
-# coctails-app
+# mix-it-app
 
 ## Project setup
 ```
