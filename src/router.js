@@ -23,7 +23,7 @@ const router = createRouter({
     routes: [
         {
             path: '/cocktails',
-            alias: '/',
+            alias: '/mix-it-app',
             component: CocktailsList,
             meta: { withAlcohol: true },
             props: {
@@ -37,22 +37,22 @@ const router = createRouter({
             ]
         },
         {
-            path: '/cocktails/id=:id',
+            path: '/mix-it-app/cocktails/id=:id',
             component: CocktailDetails
         },
         {
-            path: '/alcoholic', component: CocktailsList,
+            path: '/mix-it-app/alcoholic', component: CocktailsList,
             meta: { withAlcohol: true },
             props: {
                 endpoint: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic'
             }
         },
         {
-            path: '/favorites',
+            path: '/mix-it-app/favorites',
             component: FavoriteList
         },
         {
-            path: '/ordinary',
+            path: '/mix-it-app/ordinary',
             component: CocktailsList,
             meta: { withAlcohol: true },
             props: {
@@ -60,7 +60,7 @@ const router = createRouter({
             }
         },
         {
-            path: '/shots',
+            path: '/mix-it-app/shots',
             component: CocktailsList,
             meta: { withAlcohol: true },
             props: {
@@ -68,7 +68,7 @@ const router = createRouter({
             }
         },
         {
-            path: '/non_alcoholic',
+            path: '/mix-it-app/non_alcoholic',
             component: CocktailsList,
             meta: { withAlcohol: false },
             props: {
@@ -82,14 +82,14 @@ const router = createRouter({
             ]
         },
         {
-            path: '/search',
+            path: '/mix-it-app/search',
             component: CocktailsList,
             props: {
                 endpoint: `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`
             }
         },
         {
-            path: '/browse',
+            path: '/mix-it-app/browse',
             component: CocktailsList,
             props: {
                 endpoint: `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=`
