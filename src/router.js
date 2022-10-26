@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory} from "vue-router";
+import {createRouter, createWebHashHistory } from "vue-router";
 
 import CocktailsList from './pages/cocktails/CocktailsList';
 import CocktailDetails from './pages/cocktails/CocktailDetails.vue';
@@ -8,7 +8,7 @@ import NotFound from './pages/NotFound.vue';
 
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     scrollBehavior(to, from, savedPosition) {
         return new Promise((resolve) => {
             if (savedPosition) {
