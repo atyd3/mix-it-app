@@ -20,7 +20,7 @@ export default {
   computed: {
     searchLink() {
       return {
-        path: '/search', query: {s: this.searchTerm}
+        path: '/mix-it-app/search', query: {s: this.searchTerm}
       }
     }
   },
