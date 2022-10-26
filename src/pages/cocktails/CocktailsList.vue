@@ -83,8 +83,6 @@ export default {
     } else {
       this.loadCocktails(this.endpoint);
     }
-    console.log('this.showBrowse', this.showBrowse);
-    console.log(this.$route.path)
   },
   computed: {
     showBrowse() {

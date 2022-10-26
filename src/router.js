@@ -23,7 +23,7 @@ const router = createRouter({
     routes: [
         {
             path: '/cocktails',
-            alias: '/mix-it-app',
+            alias: '/',
             component: CocktailsList,
             meta: { withAlcohol: true },
             props: {

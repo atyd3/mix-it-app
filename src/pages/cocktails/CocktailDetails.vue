@@ -136,7 +136,6 @@ export default {
   created() {
     this.fetchCocktail();
     this.getFavoriteCocktails();
-    console.log('this.$route.params',this.$route.params);
   }
 }
 </script>

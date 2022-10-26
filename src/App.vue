@@ -54,7 +54,6 @@ export default {
   created() {
     this.openDialog();
     this.isAdult = JSON.parse(localStorage.getItem('isAdult'));
-    console.log(this.$route.fullPath)
   },
   watch: {
     $route() {

@@ -29,7 +29,6 @@ export default {
   methods: {
     chooseLetter(letter) {
       this.chosenLetter = letter;
-      console.log(letter, this.chosenLetter, this.browseLink.query.s)
       this.$router.push(this.browseLink)
     }
   }
