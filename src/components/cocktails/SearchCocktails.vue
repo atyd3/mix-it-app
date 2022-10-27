@@ -45,14 +45,14 @@ export default {
   &__button {
     width: 2.2rem;
     height: 2.2rem;
-    opacity: 80%;
+    opacity: 0.8;
     border-radius: 0 6px 6px 0;
     border: none;
     background-color: whitesmoke;
   }
 
   &__input {
-    opacity: 80%;
+    opacity: 0.8;
     border: none;
     border-radius: 6px 0 0 6px;
     padding: .2rem .5rem;

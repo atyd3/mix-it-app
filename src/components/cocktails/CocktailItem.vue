@@ -15,7 +15,7 @@ export default {
   props: ['name', 'image', 'id'],
   computed: {
     detailsLink(){
-      return '/mix-it-app/cocktails/id=' + this.id;
+      return '/cocktails/id=' + this.id;
     }
   }
 }

@@ -7,21 +7,21 @@
       </router-link>
       <search-cocktails class="nav__search"></search-cocktails>
       <div class="nav__container" @click="toggleNavigation(this.isTransformed)">
-        <router-link to="/mix-it-app/favorites" class="nav__link">
+        <router-link to="/favorites" class="nav__link">
           <h3>Favorites</h3>
         </router-link>
         <div class="nav__container" v-if="adult !== 'notAdult' || !adult">
-        <router-link to="/mix-it-app/alcoholic" class="nav__link">
+        <router-link to="/alcoholic" class="nav__link">
           <h3>Alcoholic drinks</h3>
         </router-link>
-        <router-link to="/mix-it-app/ordinary" class="nav__link">
+        <router-link to="/ordinary" class="nav__link">
           <h3>Ordinary drinks</h3>
         </router-link>
-        <router-link to="/mix-it-app/shots" class="nav__link">
+        <router-link to="/shots" class="nav__link">
           <h3>Shots</h3>
         </router-link>
         </div>
-        <router-link to="/mix-it-app/non_alcoholic" class="nav__link">
+        <router-link to="/non_alcoholic" class="nav__link">
           <h3>Non-alcoholic</h3>
         </router-link>
       </div>

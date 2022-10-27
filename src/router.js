@@ -22,8 +22,11 @@ const router = createRouter({
     },
     routes: [
         {
+            path: '/',
+            redirect: '/cocktails'
+        },
+        {
             path: '/cocktails',
-            alias: '/',
             component: CocktailsList,
             meta: { withAlcohol: true },
             props: {
@@ -37,22 +40,22 @@ const router = createRouter({
             ]
         },
         {
-            path: '/mix-it-app/cocktails/id=:id',
+            path: '/cocktails/id=:id',
             component: CocktailDetails
         },
         {
-            path: '/mix-it-app/alcoholic', component: CocktailsList,
+            path: '/alcoholic', component: CocktailsList,
             meta: { withAlcohol: true },
             props: {
                 endpoint: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic'
             }
         },
         {
-            path: '/mix-it-app/favorites',
+            path: '/favorites',
             component: FavoriteList
         },
         {
-            path: '/mix-it-app/ordinary',
+            path: '/ordinary',
             component: CocktailsList,
             meta: { withAlcohol: true },
             props: {
@@ -60,7 +63,7 @@ const router = createRouter({
             }
         },
         {
-            path: '/mix-it-app/shots',
+            path: '/shots',
             component: CocktailsList,
             meta: { withAlcohol: true },
             props: {
@@ -68,7 +71,7 @@ const router = createRouter({
             }
         },
         {
-            path: '/mix-it-app/non_alcoholic',
+            path: '/non_alcoholic',
             component: CocktailsList,
             meta: { withAlcohol: false },
             props: {
@@ -89,7 +92,7 @@ const router = createRouter({
             }
         },
         {
-            path: '/mix-it-app/browse',
+            path: '/browse',
             component: CocktailsList,
             props: {
                 endpoint: `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=`
