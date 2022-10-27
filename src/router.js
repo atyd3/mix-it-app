@@ -82,7 +82,7 @@ const router = createRouter({
             ]
         },
         {
-            path: '/mix-it-app/search',
+            path: '/search',
             component: CocktailsList,
             props: {
                 endpoint: `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`

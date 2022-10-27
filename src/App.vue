@@ -47,7 +47,7 @@ export default {
       this.isAdult = 'notAdult';
       localStorage.setItem('isAdult', JSON.stringify(this.isAdult));
       this.closeDialog();
-      this.$router.replace('/non_alcoholic');
+      this.$router.replace('/mix-it-app/non_alcoholic');
     },
 
   },
